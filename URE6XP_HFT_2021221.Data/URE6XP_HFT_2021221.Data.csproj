@@ -5,7 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Databaes.mdf" />
+    <None Remove="Databaes_log.ldf" />
+    <None Remove="Database.mdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Databaes.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Databaes_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\URE6XP_HFT_2021221.Models\URE6XP_HFT_2021221.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Database.mdf" />
   </ItemGroup>
 
 </Project>
