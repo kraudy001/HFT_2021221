@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace URE6XP_HFT_2021221.Models
 {
-    class Presentations
+    public class Presentation
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string PresentationName { get; set; }
-        public Instructor Instructor { get; set; }
-        public List<Student> Students { get; set; }
+
+        public Instructor InstructorNeptunId { get; set; }
+
+        public virtual LectureHall LectureHall { get; set; }
+        
     }
 }

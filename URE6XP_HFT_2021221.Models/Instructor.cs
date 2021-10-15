@@ -8,20 +8,22 @@ using System.Threading.Tasks;
 
 namespace URE6XP_HFT_2021221.Models
 {
-    class Instructor
+    public class Instructor
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public string Name { get; set; }
 
         public string NeptunId { get; set; }
 
         [NotMapped]
-        public List<Presentations> Presentations { get; set; }
+        public virtual ICollection<Presentation> Presentations { get; set; }
+
+        public Instructor()
+        {
+            Presentations = new HashSet<Presentation>();
+        }
 
 
-
-        
     }
 }

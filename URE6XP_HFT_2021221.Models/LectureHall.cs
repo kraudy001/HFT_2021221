@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace URE6XP_HFT_2021221.Models
 {
-    class Student
+    public class LectureHall
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Name { get; set; }
-        public string NeptunId { get; set; }
-        public List<Presentations> Presentations { get; set; }
+        public int RoomNumber { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<Presentation> Presentations { get; set; }
+
+        public LectureHall()
+        {
+            Presentations = new HashSet<Presentation>();
+        }
 
     }
 }
