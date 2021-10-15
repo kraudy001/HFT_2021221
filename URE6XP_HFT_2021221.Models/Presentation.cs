@@ -14,7 +14,7 @@ namespace URE6XP_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string PresentationName { get; set; }
 
-        public Instructor InstructorNeptunId { get; set; }
+        public virtual Instructor Instructor { get; set; }
 
         public virtual LectureHall LectureHall { get; set; }
         

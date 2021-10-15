@@ -12,7 +12,7 @@ namespace URE6XP_HFT_2021221.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoomNumber { get; set; }
+        public string RoomNumber { get; set; }
 
         [NotMapped]
         public virtual ICollection<Presentation> Presentations { get; set; }

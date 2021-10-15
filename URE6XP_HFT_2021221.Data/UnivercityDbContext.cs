@@ -28,13 +28,13 @@ namespace URE6XP_HFT_2021221.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Instructor>(entity =>
-            {
-                entity.HasMany(instructor => instructor.Presentations)
-                .WithOne(presentation => presentation.InstructorNeptunId)
-                .HasForeignKey(presentation => presentation.InstructorNeptunId)
-                .OnDelete(DeleteBehavior.Restrict);
-            });
+            //modelBuilder.Entity<Instructor>(entity =>
+            //{
+            //    entity.HasMany(instructor => instructor.Presentations)
+            //    .WithOne(presentation => presentation.InstructorNeptunId)
+            //    .HasForeignKey(presentation => presentation.InstructorNeptunId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+            //});
 
             modelBuilder.Entity<Presentation>(entity =>
             {
@@ -42,11 +42,34 @@ namespace URE6XP_HFT_2021221.Data
                 .WithMany(lectureHall => lectureHall.Presentations)
                 .HasForeignKey(presentations => presentations.LectureHall)
                 .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(presentation => presentation.Instructor)
+                .WithMany(instructor => instructor.Presentations)
+                .HasForeignKey(presentation => presentation.Instructor)
+                .OnDelete(DeleteBehavior.Restrict);
                 
             });
 
+            Instructor KovacsAndras = new Instructor() { Name = "Kovács András", NeptunId = "DFVW5VD" };
+            Instructor DrHolynkaPeter = new Instructor() { Name = "Dr.Holynka Péter", NeptunId = "553KJA" };
+            Instructor DurczyLevente = new Instructor() { Name = "Durczy Lenevte", NeptunId = "DF666D" };
+            Instructor SimonNagyGabriella = new Instructor() { Name = "Simon-Nagy Gabriella", NeptunId = "LADDEE" };
+            Instructor DrBujdosoLaszlo = new Instructor() { Name = "Dr.Bujdosó László", NeptunId = "KKKVAN" };
+            Instructor GyorineKontorEva = new Instructor() { Name = "Győriné Kontor Éva", NeptunId = "ANGOL1" };
+
+            LectureHall BAF01 = new LectureHall() { RoomNumber = "BA.F.01"};
+            LectureHall BA131 = new LectureHall() { RoomNumber = "BA.1.32.Audmax"};
+            LectureHall BA115 = new LectureHall() { RoomNumber = "BA.1.15"};
+            LectureHall BA210 = new LectureHall() { RoomNumber = "BA.2.10"};
+            LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304"};
 
 
+            Presentation HFT = new Presentation() { PresentationName = "HFT", LectureHall = BAF01, Instructor = KovacsAndras };
+            Presentation SZTF1 = new Presentation() { PresentationName = "SZTF1", LectureHall = BA131, Instructor = KovacsAndras };
+            Presentation ARCHI1 = new Presentation() { PresentationName = "Archi 1", LectureHall = BAF01, Instructor = DurczyLevente };
+            Presentation VIR = new Presentation() { PresentationName = "VIR", LectureHall = BC3304, Instructor = DrHolynkaPeter };
+            Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai", LectureHall = BA210, Instructor = DrBujdosoLaszlo };
+            Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A", LectureHall = BC3304, Instructor = GyorineKontorEva };
 
 
 
