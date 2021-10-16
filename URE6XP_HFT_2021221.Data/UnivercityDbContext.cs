@@ -71,6 +71,9 @@ namespace URE6XP_HFT_2021221.Data
             Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai", LectureHall = BA210, Instructor = DrBujdosoLaszlo };
             Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A", LectureHall = BC3304, Instructor = GyorineKontorEva };
 
+            modelBuilder.Entity<Instructor>().HasData(KovacsAndras, DrHolynkaPeter, DurczyLevente, SimonNagyGabriella, DrBujdosoLaszlo, GyorineKontorEva);
+            modelBuilder.Entity<LectureHall>().HasData(BAF01, BA131, BA115, BA210, BC3304);
+            modelBuilder.Entity<Presentation>().HasData(HFT, SZTF1, ARCHI1, VIR, Menedzsment, AngolSzaknyelv);
 
 
         }
