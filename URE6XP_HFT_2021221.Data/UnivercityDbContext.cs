@@ -9,7 +9,7 @@ namespace URE6XP_HFT_2021221.Data
     {
         public virtual DbSet<Instructor> Instructors { get; set; }
         public virtual DbSet<Presentation> Presentations { get; set; }
-        public virtual DbSet<LectureHall> Students { get; set; }
+        public virtual DbSet<LectureHall> LectureHalls { get; set; }
         public UnivercityDbContext()
         {
             this.Database.EnsureCreated();
