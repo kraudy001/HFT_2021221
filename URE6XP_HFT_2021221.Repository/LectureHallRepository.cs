@@ -8,7 +8,7 @@ using URE6XP_HFT_2021221.Models;
 
 namespace URE6XP_HFT_2021221.Repository
 {
-    class LectureHallRepository : ILectureHallRepository
+    public class LectureHallRepository : ILectureHallRepository
     {
         UnivercityDbContext db;
         public LectureHallRepository(UnivercityDbContext db)
