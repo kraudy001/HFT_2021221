@@ -14,9 +14,18 @@ namespace URE6XP_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string PresentationName { get; set; }
 
+        [NotMapped]
         public virtual Instructor Instructor { get; set; }
 
+        [ForeignKey(nameof(Instructor))]
+        public string InstrctoreName { get; set; }
+
+
+        [NotMapped]
         public virtual LectureHall LectureHall { get; set; }
-        
+
+        [ForeignKey(nameof(LectureHall))]
+        public string RoomNumber { get; set; }
+
     }
 }

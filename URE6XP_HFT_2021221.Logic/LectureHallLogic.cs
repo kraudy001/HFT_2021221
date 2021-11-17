@@ -24,8 +24,8 @@ namespace URE6XP_HFT_2021221.Logic
         public IEnumerable<string> InstructorsInLectureHall(string RoomNumber)
         {
             return from x in LectureHallRepository.GetAll()
-                   .FirstOrDefault(t => t.RoomNumber == RoomNumber)
-                   .Presentations select x.Instructor.Name;           
+                   .FirstOrDefault(t => t.RoomNumber == RoomNumber).Presentations 
+                   select x.Instructor.Name;   
         }
 
         public LectureHall Read(string RoomNumber)
@@ -33,9 +33,16 @@ namespace URE6XP_HFT_2021221.Logic
             return LectureHallRepository.Read(RoomNumber);
         }
 
+        public IEnumerable<LectureHall> ReadAll()
+        {
+            return LectureHallRepository.GetAll();
+        }
+
         public void Update(LectureHall lectureHall)
         {
             LectureHallRepository.Update(lectureHall);
         }
+
+        
     }
 }

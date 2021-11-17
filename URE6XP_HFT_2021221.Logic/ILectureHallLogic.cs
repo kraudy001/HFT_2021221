@@ -13,6 +13,10 @@ namespace URE6XP_HFT_2021221.Logic
         void Delete(string RoomNumber);
         LectureHall Read(string RoomNumber);
         void Update(LectureHall lectureHall);
+        IEnumerable<LectureHall> ReadAll();
         IEnumerable<string> InstructorsInLectureHall(string RoomNumber);
+
+
+       
     }
 }

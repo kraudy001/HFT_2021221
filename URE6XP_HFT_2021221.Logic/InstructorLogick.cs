@@ -26,6 +26,19 @@ namespace URE6XP_HFT_2021221.Logic
             return InstructorRepository.Read(name);
         }
 
+        public IEnumerable<Instructor> ReadAll()
+        {
+            return InstructorRepository.GetAll();
+        }
+
+        public IEnumerable<string> RoomsThatAnInstructorHasLactures(string NeptunId)
+        {
+            return from x in InstructorRepository.GetAll()
+                   .FirstOrDefault(i => i.NeptunId == NeptunId)
+                   .Presentations 
+                   select x.LectureHall.RoomNumber;
+        }
+
         public void Update(Instructor instructor)
         {
             InstructorRepository.Update(instructor);
