@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using URE6XP_HFT_2021221.Models;
 
-namespace URE6XP_HFT_2021221.Repository
+namespace URE6XP_HFT_2021221.Logic
 {
-    public interface ILectureHallRepository
+    interface ILectureHallLogic
     {
         void Create(LectureHall lectureHall);
         void Delete(string RoomNumber);
-        IQueryable<LectureHall> GetAll();
         LectureHall Read(string RoomNumber);
         void Update(LectureHall lectureHall);
+        IEnumerable<string> InstructorsInLectureHall(string RoomNumber);
     }
 }

@@ -7,7 +7,7 @@ using URE6XP_HFT_2021221.Models;
 
 namespace URE6XP_HFT_2021221.Repository
 {
-    interface IInstructorRepository
+    public interface IInstructorRepository
     {
         void Create(Instructor instructor);
         void Delete(string NeptunId);

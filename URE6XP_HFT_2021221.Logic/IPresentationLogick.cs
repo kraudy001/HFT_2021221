@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using URE6XP_HFT_2021221.Models;
 
-namespace URE6XP_HFT_2021221.Repository
+namespace URE6XP_HFT_2021221.Logic
 {
-    public interface IPresentatonRepository
+    interface IPresentationLogick
     {
         void Create(Presentation presentation);
         void Delete(string PresentationName);
-        IQueryable<Presentation> GetAll();
         Presentation Read(string PresentationName);
         void Update(Presentation presentation);
     }
