@@ -12,5 +12,6 @@ namespace URE6XP_HFT_2021221.Logic
         void Update(Instructor instructor);
         IEnumerable<Instructor> ReadAll();
         IEnumerable<string> RoomsThatAnInstructorHasLactures(string NeptunId);
+        int HowManyRoomAnInstructorTeachisIn(string NeptunId);
     }
 }

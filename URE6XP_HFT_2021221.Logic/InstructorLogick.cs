@@ -21,6 +21,13 @@ namespace URE6XP_HFT_2021221.Logic
             InstructorRepository.Delete(name);
         }
 
+        public int HowManyRoomAnInstructorTeachisIn(string NeptunId)
+        {
+            var q = InstructorRepository.GetAll().FirstOrDefault(i => i.NeptunId == NeptunId).Presentations;
+            var q1 = from x in q group x by x.RoomNumber;
+            return q1.Count();
+        }
+
         public Instructor Read(string name)
         {
             return InstructorRepository.Read(name);
