@@ -8,9 +8,9 @@ using URE6XP_HFT_2021221.Repository;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    class PresentationLogick : IPresentationLogick
+    public class PresentationLogick : IPresentationLogick
     {
-        IPresentatonRepository PresentatonRepository;
+        IPresentationRepository PresentatonRepository;
         public void Create(Presentation presentation)
         {
             PresentatonRepository.Create(presentation);

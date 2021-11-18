@@ -7,7 +7,7 @@ using URE6XP_HFT_2021221.Models;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    interface ILectureHallLogic
+    public interface ILectureHallLogic
     {
         void Create(LectureHall lectureHall);
         void Delete(string RoomNumber);

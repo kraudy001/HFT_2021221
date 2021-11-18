@@ -7,7 +7,7 @@ using URE6XP_HFT_2021221.Models;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    interface IPresentationLogick
+    public interface IPresentationLogick
     {
         void Create(Presentation presentation);
         void Delete(string PresentationName);

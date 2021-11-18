@@ -8,7 +8,7 @@ using URE6XP_HFT_2021221.Repository;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    class LectureHallLogic : ILectureHallLogic
+    public class LectureHallLogic : ILectureHallLogic
     {
         ILectureHallRepository LectureHallRepository;
         public void Create(LectureHall lectureHall)

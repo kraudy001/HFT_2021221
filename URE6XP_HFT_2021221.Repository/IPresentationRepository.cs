@@ -7,7 +7,7 @@ using URE6XP_HFT_2021221.Models;
 
 namespace URE6XP_HFT_2021221.Repository
 {
-    public interface IPresentatonRepository
+    public interface IPresentationRepository
     {
         void Create(Presentation presentation);
         void Delete(string PresentationName);
