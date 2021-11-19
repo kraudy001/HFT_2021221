@@ -11,7 +11,7 @@ namespace URE6XP_HFT_2021221.Repository
     {
         void Create(Instructor instructor);
         void Delete(string NeptunId);
-        IQueryable<Instructor> GetAll();
+        IQueryable<Instructor> ReadALL();
         Instructor Read(string NeptunId);
         void Update(Instructor instructor);
     }

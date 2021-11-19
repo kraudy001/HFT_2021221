@@ -11,7 +11,6 @@ namespace URE6XP_HFT_2021221.Models
     public class LectureHall
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string RoomNumber { get; set; }
 
         [NotMapped]

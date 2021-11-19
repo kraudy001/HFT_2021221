@@ -28,7 +28,7 @@ namespace URE6XP_HFT_2021221.Repository
             db.SaveChanges();
         }
 
-        public IQueryable<Presentation> GetAll()
+        public IQueryable<Presentation> ReadALL()
         {
             return db.Presentations;
         }

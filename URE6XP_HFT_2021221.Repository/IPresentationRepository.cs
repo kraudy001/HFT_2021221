@@ -11,7 +11,7 @@ namespace URE6XP_HFT_2021221.Repository
     {
         void Create(Presentation presentation);
         void Delete(string PresentationName);
-        IQueryable<Presentation> GetAll();
+        IQueryable<Presentation> ReadALL();
         Presentation Read(string PresentationName);
         void Update(Presentation presentation);
     }

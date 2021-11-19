@@ -23,7 +23,7 @@ namespace URE6XP_HFT_2021221.Logic
 
         public int HowManyRoomAnInstructorTeachisIn(string NeptunId)
         {
-            var q = InstructorRepository.GetAll().FirstOrDefault(i => i.NeptunId == NeptunId).Presentations;
+            var q = InstructorRepository.ReadALL().FirstOrDefault(i => i.NeptunId == NeptunId).Presentations;
             var q1 = from x in q group x by x.RoomNumber;
             return q1.Count();
         }
@@ -35,12 +35,12 @@ namespace URE6XP_HFT_2021221.Logic
 
         public IEnumerable<Instructor> ReadAll()
         {
-            return InstructorRepository.GetAll();
+            return InstructorRepository.ReadALL();
         }
 
         public IEnumerable<string> RoomsThatAnInstructorHasLactures(string NeptunId)
         {
-            return from x in InstructorRepository.GetAll()
+            return from x in InstructorRepository.ReadALL()
                    .FirstOrDefault(i => i.NeptunId == NeptunId)
                    .Presentations 
                    select x.LectureHall.RoomNumber;

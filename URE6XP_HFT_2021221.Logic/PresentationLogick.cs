@@ -23,7 +23,7 @@ namespace URE6XP_HFT_2021221.Logic
 
         public IEnumerable<KeyValuePair<string, string>> PresentetionsAndNeptunIDs()
         {
-            return from x in PresentatonRepository.GetAll() 
+            return from x in PresentatonRepository.ReadALL() 
                    select new KeyValuePair<string, string>
                    (x.PresentationName, x.Instructor.NeptunId);
         }
@@ -35,7 +35,7 @@ namespace URE6XP_HFT_2021221.Logic
 
         public IEnumerable<Presentation> ReadAll()
         {
-            return PresentatonRepository.GetAll();
+            return PresentatonRepository.ReadALL();
         }
 
         public void Update(Presentation presentation)
@@ -44,7 +44,7 @@ namespace URE6XP_HFT_2021221.Logic
         }
         public IEnumerable<string> WitchLacturesTeachisAnInstructorInARoom(string RoomNumber, string NeptunId)
         {
-            return from x in PresentatonRepository.GetAll()
+            return from x in PresentatonRepository.ReadALL()
                      where x.LectureHall.RoomNumber == RoomNumber && x.Instructor.NeptunId == NeptunId
                      select x.PresentationName;
         }

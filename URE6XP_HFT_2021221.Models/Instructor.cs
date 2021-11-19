@@ -11,7 +11,6 @@ namespace URE6XP_HFT_2021221.Models
     public class Instructor
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
 
         public string NeptunId { get; set; }

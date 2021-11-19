@@ -64,12 +64,12 @@ namespace URE6XP_HFT_2021221.Data
             LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304"};
 
 
-            Presentation HFT = new Presentation() { PresentationName = "HFT", RoomNumber = "BA.F.01", InstrctoreName = "DFVW5VD" };
-            Presentation SZTF1 = new Presentation() { PresentationName = "SZTF1", RoomNumber = "BA.1.32.Audmax", InstrctoreName = "DFVW5VD" };
-            Presentation ARCHI1 = new Presentation() { PresentationName = "Archi 1", RoomNumber = "BA.F.01", InstrctoreName = "DF666D" };
-            Presentation VIR = new Presentation() { PresentationName = "VIR", RoomNumber = "BC.3.304", InstrctoreName = "553KJA" };
-            Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai", RoomNumber = "BA.2.10", InstrctoreName = "KKKVAN" };
-            Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A", RoomNumber = "BC.3.304", InstrctoreName = "ANGOL1" };
+            Presentation HFT = new Presentation() { PresentationName = "HFT", RoomNumber = BAF01.RoomNumber, InstrctoreName = KovacsAndras.Name };
+            Presentation SZTF1 = new Presentation() { PresentationName = "SZTF1", RoomNumber = BA132.RoomNumber, InstrctoreName = KovacsAndras.Name };
+            Presentation ARCHI1 = new Presentation() { PresentationName = "Archi 1", RoomNumber = BAF01.RoomNumber, InstrctoreName = DurczyLevente.Name };
+            Presentation VIR = new Presentation() { PresentationName = "VIR", RoomNumber = BC3304.RoomNumber,  InstrctoreName = DrHolynkaPeter.Name };
+            Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai",  RoomNumber = BA210.RoomNumber, InstrctoreName = DrBujdosoLaszlo.Name };
+            Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A",  RoomNumber = BC3304.RoomNumber, InstrctoreName = GyorineKontorEva.Name };
 
             modelBuilder.Entity<Instructor>().HasData(KovacsAndras, DrHolynkaPeter, DurczyLevente, SimonNagyGabriella, DrBujdosoLaszlo, GyorineKontorEva);
             modelBuilder.Entity<LectureHall>().HasData(BAF01, BA132, BA115, BA210, BC3304);

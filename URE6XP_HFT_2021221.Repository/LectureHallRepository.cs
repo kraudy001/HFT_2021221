@@ -26,7 +26,7 @@ namespace URE6XP_HFT_2021221.Repository
             return db.LectureHalls.FirstOrDefault(t => t.RoomNumber == RoomNumber);
         }
 
-        public IQueryable<LectureHall> GetAll()
+        public IQueryable<LectureHall> ReadALL()
         {
             return db.LectureHalls;
         }
