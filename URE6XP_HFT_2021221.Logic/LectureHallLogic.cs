@@ -11,6 +11,11 @@ namespace URE6XP_HFT_2021221.Logic
     public class LectureHallLogic : ILectureHallLogic
     {
         ILectureHallRepository LectureHallRepository;
+
+        public LectureHallLogic(ILectureHallRepository lectureHallRepository)
+        {
+            this.LectureHallRepository = lectureHallRepository;
+        }
         public void Create(LectureHall lectureHall)
         {
             LectureHallRepository.Create(lectureHall);

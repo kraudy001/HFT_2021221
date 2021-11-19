@@ -8,9 +8,15 @@ using URE6XP_HFT_2021221.Repository;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    public class PresentationLogick : IPresentationLogick
+    public class PresentationLogic : IPresentationLogic
     {
         IPresentationRepository PresentatonRepository;
+
+        public PresentationLogic(IPresentationRepository presentationRepository)
+        {
+            this.PresentatonRepository = presentationRepository;
+        }
+
         public void Create(Presentation presentation)
         {
             PresentatonRepository.Create(presentation);
@@ -21,11 +27,10 @@ namespace URE6XP_HFT_2021221.Logic
             PresentatonRepository.Delete(PresentationName);
         }
 
-        public IEnumerable<KeyValuePair<string, string>> PresentetionsAndNeptunIDs()
+        public IEnumerable<string> PresentetionsAndNeptunIDs()
         {
-            return from x in PresentatonRepository.ReadALL() 
-                   select new KeyValuePair<string, string>
-                   (x.PresentationName, x.Instructor.NeptunId);
+            return from x in PresentatonRepository.ReadALL()
+                   select (x.PresentationName + " " + x.Instructor.NeptunId); ;
         }
 
         public Presentation Read(string PresentationName)

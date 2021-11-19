@@ -8,9 +8,14 @@ using URE6XP_HFT_2021221.Repository;
 
 namespace URE6XP_HFT_2021221.Logic
 {
-    public class InstructorLogick : IInstructorLogic
+    public class InstructorLogic : IInstructorLogic
     {
         IInstructorRepository InstructorRepository;
+
+        public InstructorLogic(IInstructorRepository instructorRepository)
+        {
+            this.InstructorRepository = instructorRepository;
+        }
         public void Create(Instructor instructor)
         {
             InstructorRepository.Create(instructor);
