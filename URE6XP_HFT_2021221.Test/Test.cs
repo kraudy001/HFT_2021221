@@ -22,26 +22,21 @@ namespace URE6XP_HFT_2021221.Test
             var mockInstructorLogicRepositroy = new Mock<IInstructorRepository>();
             var mockLectureHallRepository = new Mock<ILectureHallRepository>();
 
-            Instructor KovacsAndras = new Instructor() { Name = "Kovács András", NeptunId = "DFVW5VD" };
+            Instructor KovacsAndras = new Instructor() { Name = "Kovács András", NeptunId = "DFVW5VD"};
             Instructor DrHolynkaPeter = new Instructor() { Name = "Dr.Holynka Péter", NeptunId = "553KJA" };
             Instructor DurczyLevente = new Instructor() { Name = "Durczy Lenevte", NeptunId = "DF666D" };
             Instructor SimonNagyGabriella = new Instructor() { Name = "Simon-Nagy Gabriella", NeptunId = "LADDEE" };
             Instructor DrBujdosoLaszlo = new Instructor() { Name = "Dr.Bujdosó László", NeptunId = "KKKVAN" };
             Instructor GyorineKontorEva = new Instructor() { Name = "Győriné Kontor Éva", NeptunId = "ANGOL1" };
 
-            var instructirs = new List<Instructor>() { KovacsAndras, DrBujdosoLaszlo, DrHolynkaPeter, SimonNagyGabriella, DurczyLevente, GyorineKontorEva }.AsQueryable();
 
-            mockInstructorLogicRepositroy.Setup((t) => t.ReadALL()).Returns(instructirs);
+            LectureHall BAF01 = new LectureHall() { RoomNumber = "BA.F.01"};
+            LectureHall BA132 = new LectureHall() { RoomNumber = "BA.1.32.Audmax"};
+            LectureHall BA115 = new LectureHall() { RoomNumber = "BA.1.15"};
+            LectureHall BA210 = new LectureHall() { RoomNumber = "BA.2.10"};
+            LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304"};
 
-            LectureHall BAF01 = new LectureHall() { RoomNumber = "BA.F.01" , Presentations = new List<Presentation> { } };
-            LectureHall BA132 = new LectureHall() { RoomNumber = "BA.1.32.Audmax" , Presentations = new List<Presentation> { } };
-            LectureHall BA115 = new LectureHall() { RoomNumber = "BA.1.15", Presentations = new List<Presentation> { } };
-            LectureHall BA210 = new LectureHall() { RoomNumber = "BA.2.10", Presentations = new List<Presentation> { } };
-            LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304", Presentations = new List<Presentation> { } };
 
-            var lectureHalls = new List<LectureHall>() { BA115, BA132, BA210, BAF01, BC3304 }.AsQueryable();
-
-            mockLectureHallRepository.Setup((t) => t.ReadALL()).Returns(lectureHalls);
 
             var HFT = new Presentation() { PresentationName = "HFT", LectureHall = BAF01, RoomNumber = BAF01.RoomNumber, Instructor = KovacsAndras, InstrctoreName = KovacsAndras.Name };
             var SZTF1 = new Presentation() { PresentationName = "SZTF1", LectureHall = BA132, RoomNumber = BA132.RoomNumber, Instructor = KovacsAndras, InstrctoreName = KovacsAndras.Name };
@@ -50,10 +45,32 @@ namespace URE6XP_HFT_2021221.Test
             var Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai", LectureHall = BA210, RoomNumber = BA210.RoomNumber, Instructor = DrBujdosoLaszlo, InstrctoreName = DrBujdosoLaszlo.Name };
             var Angol1 = new Presentation() { PresentationName = "Angol Szaknyel A", LectureHall = BC3304, RoomNumber = BC3304.RoomNumber, Instructor = GyorineKontorEva, InstrctoreName = GyorineKontorEva.Name };
 
-            var presentations = new List<Presentation>() { HFT,SZTF1,Archi1,VIR,Menedzsment,Angol1 }.AsQueryable();
+            BAF01.Presentations = new List<Presentation> { HFT, Archi1 };
+            BA132.Presentations = new List<Presentation> { SZTF1 };
+            BA115.Presentations = new List<Presentation> { };
+            BA210.Presentations = new List<Presentation> { Menedzsment };
+            BC3304.Presentations = new List<Presentation> { VIR, Angol1 };
 
+            KovacsAndras.Presentations = new List<Presentation> { HFT, SZTF1 };
+            DrHolynkaPeter.Presentations = new List<Presentation> { VIR };
+            DurczyLevente.Presentations = new List<Presentation> { Archi1 };
+            SimonNagyGabriella.Presentations = new List<Presentation> { };
+            DrBujdosoLaszlo.Presentations = new List<Presentation> { Menedzsment };
+            GyorineKontorEva.Presentations = new List<Presentation> { Angol1 };
+
+            var lectureHalls = new List<LectureHall>() { BA115, BA132, BA210, BAF01, BC3304 }.AsQueryable();
+            mockLectureHallRepository.Setup((t) => t.ReadALL()).Returns(lectureHalls);
+
+            var instructirs = new List<Instructor>() { KovacsAndras, DrBujdosoLaszlo, DrHolynkaPeter, SimonNagyGabriella, DurczyLevente, GyorineKontorEva }.AsQueryable();
+            mockInstructorLogicRepositroy.Setup((t) => t.ReadALL()).Returns(instructirs);
+
+            var presentations = new List<Presentation>() { HFT,SZTF1,Archi1,VIR,Menedzsment,Angol1 }.AsQueryable();
             mockPresentationRepository.Setup((t) => t.ReadALL()).Returns(presentations);
 
+
+
+            lectureHallLogic = new LectureHallLogic(mockLectureHallRepository.Object);
+            instructorLogic = new InstructorLogic(mockInstructorLogicRepositroy.Object);
             presentationLogic = new PresentationLogic(mockPresentationRepository.Object);
         }
 
@@ -61,21 +78,67 @@ namespace URE6XP_HFT_2021221.Test
         public void PresentetionsAndNeptunIDsTest()
         {
             //ACT
+
             var resoult = presentationLogic.PresentetionsAndNeptunIDs();
+
             //ASSERT
+
             var expected = new List<string>() { "HFT DFVW5VD", "SZTF1 DFVW5VD", "Archi 1 DF666D", "VIR 553KJA", "Menedzsment alapjai KKKVAN", "Angol Szaknyel A ANGOL1" };
-            Assert.That(resoult, Is.EqualTo(expected));
+
+            Assert.That(resoult, Is.EquivalentTo(expected));
         }
 
         [Test]
         public void WitchLacturesTeachisAnInstructorInARoomTest()
         {
             //ACT
+
             var resoult = presentationLogic.WitchLacturesTeachisAnInstructorInARoom("BA.F.01", "DFVW5VD");
+
             //ASSERT
+
             var expected = new List<string>() { "HFT" };
-            Assert.That(resoult, Is.EqualTo(expected));
+
+            Assert.That(resoult, Is.EquivalentTo(expected));
         }
 
+        [Test]
+        public void InstructorsInLectureHallTest()
+        {
+            //ACT
+
+            var resoult = lectureHallLogic.InstructorsInLectureHall("BC.3.304");
+
+            //ASSERT
+
+            var expected = new List<string>() { "Győriné Kontor Éva", "Dr.Holynka Péter" };
+
+            Assert.That(resoult, Is.EquivalentTo(expected));
+        }
+
+        [Test]
+        public void HowManyRoomAnInstructorTeachisInTest()
+        {
+            //ACT
+
+            int resoult = instructorLogic.HowManyRoomAnInstructorTeachisIn("DFVW5VD");
+
+            //ASSERT
+
+            Assert.That(resoult, Is.EqualTo(2));
+        }
+        [Test]
+        public void RoomsThatAnInstructorHasLacturesTest()
+        {
+            //ACT
+
+            var resoult = instructorLogic.RoomsThatAnInstructorHasLactures("ANGOL1");
+
+            //ASSERT
+
+            var expected = new List<string>() { "BC.3.304"};
+
+            Assert.That(resoult, Is.EquivalentTo(expected));
+        }
     }
 }
