@@ -174,5 +174,45 @@ namespace URE6XP_HFT_2021221.Test
 
                 );
         }
+
+        //[TestCase("Dr.Kovács András", "DFVW5VD")]
+        //public void InstructorUpdate(string instructorName, string neptunId)
+        //{
+
+        //    instructorLogic.Update(new Instructor() {Name = instructorName, NeptunId = neptunId , Presentations = new List<Presentation>() { } });
+
+        //    //ASSERT
+
+
+        //    Assert.That(instructorName, Is.EquivalentTo(instructorLogic.Read(neptunId).Name));
+        //}
+
+        [Test]
+        public void InstructorUpdate()
+        {
+            //ACT
+
+            instructorLogic.Update(new Instructor() { Name = "Dr.Kovács András", NeptunId = "DFVW5VD" });
+
+            //ASSERT
+
+            Assert.That("Dr.Kovács András", Is.EqualTo(instructorLogic.Read("DFVW5VD").Name));   //hát én ezt nem értem :(
+        }
+
+        [Test]
+        public void LectureHallLogicDeleteTest()
+        {
+            lectureHallLogic.Delete("BA.1.15");
+
+            Assert.That(lectureHallLogic.Read("BA.1.15"), Is.Null);
+        }        
+
+        [Test]
+        public void InstructorTest()
+        {
+            lectureHallLogic.Delete("DFVW5VD");
+
+            Assert.That(lectureHallLogic.Read("DFVW5VD"), Is.Null);
+        }
     }
 }
