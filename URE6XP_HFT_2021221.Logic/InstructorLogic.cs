@@ -18,6 +18,15 @@ namespace URE6XP_HFT_2021221.Logic
         }
         public void Create(Instructor instructor)
         {
+
+            if (instructor.NeptunId.Length != 6)
+            {
+                throw new ArgumentException("The length of neptun id must be 6");
+            }
+            if(instructor.Name.Length < 3)
+            {
+                throw new ArgumentException("Length of name must be at least 3");
+            }
             InstructorRepository.Create(instructor);
         }
 

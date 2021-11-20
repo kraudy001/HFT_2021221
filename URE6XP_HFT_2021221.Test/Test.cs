@@ -116,16 +116,17 @@ namespace URE6XP_HFT_2021221.Test
             Assert.That(resoult, Is.EquivalentTo(expected));
         }
 
-        [Test]
-        public void HowManyRoomAnInstructorTeachisInTest()
+        [TestCase("DFVW5VD", 2)]
+        [TestCase("ANGOL1", 1)]
+        public void HowManyRoomAnInstructorTeachisInTest(string neptunId, int expected)
         {
             //ACT
 
-            int resoult = instructorLogic.HowManyRoomAnInstructorTeachisIn("DFVW5VD");
+            int resoult = instructorLogic.HowManyRoomAnInstructorTeachisIn(neptunId);
 
             //ASSERT
 
-            Assert.That(resoult, Is.EqualTo(2));
+            Assert.That(resoult, Is.EqualTo(expected));
         }
         [Test]
         public void RoomsThatAnInstructorHasLacturesTest()
@@ -139,6 +140,39 @@ namespace URE6XP_HFT_2021221.Test
             var expected = new List<string>() { "BC.3.304"};
 
             Assert.That(resoult, Is.EquivalentTo(expected));
+        }
+        [Test]
+        public void PresentatonsCreateTest()
+        { 
+            Assert.That(
+
+                () => presentationLogic.Create(new Presentation { PresentationName = "NO", InstrctoreName = "Még Egy Előadó Név", RoomNumber = "AB.1.12" }),
+
+                Throws.TypeOf<ArgumentException>()
+                
+                );
+        }
+        [Test]
+        public void InstructorCreateTest()
+        {
+            Assert.That(
+
+                () => instructorLogic.Create(new Instructor { NeptunId = "NOT6",  Name = "Még Egy Előadó Név"}),
+
+                Throws.TypeOf<ArgumentException>()
+
+                );
+        }
+        [Test]
+        public void LectureHallrCreateTest()
+        {
+            Assert.That(
+
+                () => lectureHallLogic.Create(new LectureHall { RoomNumber = "YES" }),
+
+                Throws.TypeOf<ArgumentException>()
+
+                );
         }
     }
 }

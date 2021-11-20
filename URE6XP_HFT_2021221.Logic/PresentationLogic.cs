@@ -19,6 +19,10 @@ namespace URE6XP_HFT_2021221.Logic
 
         public void Create(Presentation presentation)
         {
+            if(presentation.PresentationName.Length < 3)
+            {
+                throw new ArgumentException("Presentation name is to short");
+            }
             PresentatonRepository.Create(presentation);
         }
 

@@ -18,6 +18,11 @@ namespace URE6XP_HFT_2021221.Logic
         }
         public void Create(LectureHall lectureHall)
         {
+            if (lectureHall.RoomNumber.Length < 6)
+            {
+                throw new ArgumentException("Room number cant be shorter thzen 6 caracter");
+            }
+
             LectureHallRepository.Create(lectureHall);
         }
 
