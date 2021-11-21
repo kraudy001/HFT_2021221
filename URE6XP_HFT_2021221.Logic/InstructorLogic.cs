@@ -42,9 +42,9 @@ namespace URE6XP_HFT_2021221.Logic
             return q1.Count();
         }
 
-        public Instructor Read(string name)
+        public Instructor Read(string NeptunID)
         {
-            return InstructorRepository.Read(name);
+            return InstructorRepository.Read(NeptunID);
         }
 
         public IEnumerable<Instructor> ReadAll()

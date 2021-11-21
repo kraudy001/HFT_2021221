@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace URE6XP_HFT_2021221.Models
@@ -14,6 +15,7 @@ namespace URE6XP_HFT_2021221.Models
         public string PresentationName { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Instructor Instructor { get; set; }
 
         [ForeignKey(nameof(Instructor))]
@@ -21,6 +23,7 @@ namespace URE6XP_HFT_2021221.Models
 
 
         [NotMapped]
+        [JsonIgnore]
         public virtual LectureHall LectureHall { get; set; }
 
         [ForeignKey(nameof(LectureHall))]

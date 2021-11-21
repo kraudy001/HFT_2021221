@@ -63,6 +63,7 @@ namespace URE6XP_HFT_2021221.Test
 
             var instructirs = new List<Instructor>() { KovacsAndras, DrBujdosoLaszlo, DrHolynkaPeter, SimonNagyGabriella, DurczyLevente, GyorineKontorEva }.AsQueryable();
             mockInstructorLogicRepositroy.Setup((t) => t.ReadALL()).Returns(instructirs);
+            mockInstructorLogicRepositroy.Setup((t) => t.Read(It.IsAny<string>())).Returns(instructirs.FirstOrDefault(x => x.NeptunId == It.IsAny<string>()));
 
             var presentations = new List<Presentation>() { HFT,SZTF1,Archi1,VIR,Menedzsment,Angol1 }.AsQueryable();
             mockPresentationRepository.Setup((t) => t.ReadALL()).Returns(presentations);
@@ -191,6 +192,8 @@ namespace URE6XP_HFT_2021221.Test
         public void InstructorUpdate()
         {
             //ACT
+            var valamik = instructorLogic.Read("DFVW5VD");
+
 
             instructorLogic.Update(new Instructor() { Name = "Dr.Kovács András", NeptunId = "DFVW5VD" });
 
@@ -208,7 +211,7 @@ namespace URE6XP_HFT_2021221.Test
         }        
 
         [Test]
-        public void InstructorTest()
+        public void InstructorLogicDeletTest()
         {
             lectureHallLogic.Delete("DFVW5VD");
 
