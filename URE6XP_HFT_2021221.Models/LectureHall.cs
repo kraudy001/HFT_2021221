@@ -13,6 +13,7 @@ namespace URE6XP_HFT_2021221.Models
     {
         [Key]
         public string RoomNumber { get; set; }
+        public int Capacity { get; set; }
 
         [NotMapped]
         [JsonIgnore]
@@ -23,5 +24,9 @@ namespace URE6XP_HFT_2021221.Models
             Presentations = new HashSet<Presentation>();
         }
 
+        public override string ToString()
+        {
+            return "Room number = " + this.RoomNumber;
+        }
     }
 }

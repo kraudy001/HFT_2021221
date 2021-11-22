@@ -41,12 +41,12 @@ namespace URE6XP_HFT_2021221.Data
                 entity.HasOne(presentation => presentation.LectureHall)
                 .WithMany(lectureHall => lectureHall.Presentations)
                 .HasForeignKey(presentations => presentations.RoomNumber)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(presentation => presentation.Instructor)
                 .WithMany(instructor => instructor.Presentations)
                 .HasForeignKey(presentation => presentation.InstrctoreName)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
                 
             });
 
@@ -57,11 +57,11 @@ namespace URE6XP_HFT_2021221.Data
             Instructor DrBujdosoLaszlo = new Instructor() { Name = "Dr.Bujdosó László", NeptunId = "KKKVAN" };
             Instructor GyorineKontorEva = new Instructor() { Name = "Győriné Kontor Éva", NeptunId = "ANGOL1" };
 
-            LectureHall BAF01 = new LectureHall() { RoomNumber = "BA.F.01"};
-            LectureHall BA132 = new LectureHall() { RoomNumber = "BA.1.32.Audmax"};
-            LectureHall BA115 = new LectureHall() { RoomNumber = "BA.1.15"};
-            LectureHall BA210 = new LectureHall() { RoomNumber = "BA.2.10"};
-            LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304"};
+            LectureHall BAF01 = new LectureHall() { RoomNumber = "BA.F.01", Capacity = 100};
+            LectureHall BA132 = new LectureHall() { RoomNumber = "BA.1.32.Audmax", Capacity = 666 };
+            LectureHall BA115 = new LectureHall() { RoomNumber = "BA.1.15", Capacity = 10 };
+            LectureHall BA210 = new LectureHall() { RoomNumber = "BA.2.10", Capacity = 50 };
+            LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304", Capacity = 24 };
 
 
             Presentation HFT = new Presentation() { PresentationName = "HFT", RoomNumber = BAF01.RoomNumber, InstrctoreName = KovacsAndras.Name };

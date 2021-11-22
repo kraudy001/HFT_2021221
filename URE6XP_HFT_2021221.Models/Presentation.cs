@@ -29,5 +29,10 @@ namespace URE6XP_HFT_2021221.Models
         [ForeignKey(nameof(LectureHall))]
         public string RoomNumber { get; set; }
 
+        public override string ToString()
+        {
+            return "Presentation name = " + this.PresentationName+ "\t Instructor name = " + this.InstrctoreName + "\t Room number = " + this.RoomNumber;
+        }
+
     }
 }

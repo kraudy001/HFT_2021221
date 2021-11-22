@@ -42,6 +42,7 @@ namespace URE6XP_HFT_2021221.Repository
         {
             var LectureHallToUpdate = Read(lectureHall.RoomNumber);
             LectureHallToUpdate.Presentations = lectureHall.Presentations;
+            LectureHallToUpdate.Capacity = lectureHall.Capacity;
             db.SaveChanges();
         }
     }

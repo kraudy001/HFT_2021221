@@ -26,5 +26,10 @@ namespace URE6XP_HFT_2021221.Models
         }
 
 
+        public override string ToString()
+        {
+            return " Name = "+this.Name + "\t NeptunId = " + this.NeptunId;
+        }
+
     }
 }

@@ -76,7 +76,7 @@ namespace URE6XP_HFT_2021221.Client
             response.EnsureSuccessStatusCode();
         }
 
-        public void Delete(int id, string endpoint)
+        public void Delete(string id, string endpoint)
         {
             HttpResponseMessage response =
                 client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
