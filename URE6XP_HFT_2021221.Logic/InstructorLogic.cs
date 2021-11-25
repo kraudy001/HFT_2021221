@@ -37,9 +37,12 @@ namespace URE6XP_HFT_2021221.Logic
 
         public int HowManyRoomAnInstructorTeachisIn(string NeptunId)
         {
-            var q = InstructorRepository.ReadALL().FirstOrDefault(i => i.NeptunId == NeptunId).Presentations;
-            var q1 = from x in q group x by x.RoomNumber;
-            return q1.Count();
+            var q = InstructorRepository.ReadALL().FirstOrDefault(i => i.NeptunId == NeptunId);
+            if (q is not null)
+            {
+                return q.Presentations.GroupBy<Presentation,string>(i =>  i.RoomNumber).Count();
+            }
+            return -1;
         }
 
         public Instructor Read(string NeptunID)
@@ -55,13 +58,17 @@ namespace URE6XP_HFT_2021221.Logic
         public IEnumerable<string> RoomsThatAnInstructorHasLactures(string NeptunId)
         {
             return from x in InstructorRepository.ReadALL()
-                   .FirstOrDefault(i => i.NeptunId == NeptunId)
+                   .FirstOrDefault(i => i.NeptunId == NeptunId)?
                    .Presentations 
                    select x.LectureHall.RoomNumber;
         }
 
         public void Update(Instructor instructor)
         {
+            if (instructor.Name.Length < 3)
+            {
+                throw new ArgumentException("Length of name must be at least 3");
+            }
             InstructorRepository.Update(instructor);
         }
     }

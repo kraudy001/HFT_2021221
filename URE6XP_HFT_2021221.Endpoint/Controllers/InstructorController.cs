@@ -37,16 +37,34 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
 
         // POST /Instructor
         [HttpPost]
-        public void Post([FromBody] Instructor value)
+        public IActionResult Post([FromBody] Instructor value)
         {
-            il.Create(value);
+            try
+            {
+                il.Create(value);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                
+            }
+            return Ok();
         }
 
         // PUT /Instructor
         [HttpPut]
-        public void Put([FromBody] Instructor value)
+        public IActionResult Put([FromBody] Instructor value)
         {
-            il.Update(value);
+            try
+            {
+                il.Update(value);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+            return Ok();
         }
 
         // DELETE /Instructor/5

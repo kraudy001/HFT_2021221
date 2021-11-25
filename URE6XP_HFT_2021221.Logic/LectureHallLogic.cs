@@ -18,7 +18,7 @@ namespace URE6XP_HFT_2021221.Logic
         }
         public void Create(LectureHall lectureHall)
         {
-            if (lectureHall.RoomNumber.Length < 6)
+            if (lectureHall.RoomNumber.Length < 5)
             {
                 throw new ArgumentException("Room number cant be shorter thzen 6 caracter");
             }
@@ -33,9 +33,14 @@ namespace URE6XP_HFT_2021221.Logic
 
         public IEnumerable<string> InstructorsInLectureHall(string RoomNumber)
         {
-            return from x in LectureHallRepository.ReadALL()
-                   .FirstOrDefault(t => t.RoomNumber == RoomNumber).Presentations 
-                   select x.Instructor.Name;   
+            var q = LectureHallRepository.ReadALL()
+                   .FirstOrDefault(t => t.RoomNumber == RoomNumber).Presentations;
+            if (q.Count() > 0)
+            {
+                return from x in q select ((x)?.Instructor)?.Name;
+            }
+            return new List<string>() { "No instructor in this room" };
+
         }
 
         public LectureHall Read(string RoomNumber)

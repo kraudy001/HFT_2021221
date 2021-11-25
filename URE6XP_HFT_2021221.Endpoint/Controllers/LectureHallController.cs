@@ -37,9 +37,19 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
 
         // POST /LectureHall
         [HttpPost]
-        public void Post([FromBody] LectureHall value)
+        public IActionResult Post([FromBody] LectureHall value)
         {
-            ll.Update(value);
+            try
+            {
+                ll.Create(value);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+            return Ok();
+            
         }
 
         // PUT /LectureHall

@@ -70,10 +70,16 @@ namespace URE6XP_HFT_2021221.Client
 
         public void Post<T>(T item, string endpoint)
         {
+ 
             HttpResponseMessage response =
-                client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-
+            client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+            if(!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
+            
             response.EnsureSuccessStatusCode();
+
         }
 
         public void Delete(string id, string endpoint)
@@ -88,7 +94,10 @@ namespace URE6XP_HFT_2021221.Client
         {
             HttpResponseMessage response =
                 client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
 
             response.EnsureSuccessStatusCode();
         }

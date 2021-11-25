@@ -11,9 +11,9 @@ namespace URE6XP_HFT_2021221.Models
 {
     public class Instructor
     {
-        [Key]
+        
         public string Name { get; set; }
-
+        [Key]
         public string NeptunId { get; set; }
 
         [NotMapped]

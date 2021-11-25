@@ -9,7 +9,12 @@ namespace URE6XP_HFT_2021221.Client
 {
     class InstructorClient
     {
-        public static void InstructorGetALL(RestService rest)
+        RestService rest;
+        public InstructorClient(RestService rest)
+        {
+            this.rest = rest;
+        }
+        public  void InstructorGetALL()
         {
             Console.WriteLine("All Instructor Listed");
 
@@ -23,7 +28,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void InstructorGetOne(RestService rest)
+        public  void InstructorGetOne()
         {
             Console.WriteLine("What is the neptun id of an instructor");
 
@@ -44,7 +49,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void InstructorCreate(RestService rest)
+        public  void InstructorCreate()
         {
             Console.WriteLine("Pleas type in instructor name");
             Instructor instructor = new Instructor() { Name = (Console.ReadLine()) };
@@ -56,21 +61,21 @@ namespace URE6XP_HFT_2021221.Client
             {
                 rest.Post<Instructor>(instructor, "Instructor");
             }
-            catch (ArgumentException ex)
+            catch (Exception)
             {
 
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Name most be at least 4 caracter and neptun id must be 6 caracter");
                 Console.WriteLine("Would you like to try agen? \n Then type YES");
                 if (Console.ReadLine() == "YES")
                 {
-                    InstructorCreate(rest);
+                    InstructorCreate();
                 }
             }
 
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void InstructorUpdate(RestService rest)
+        public  void InstructorUpdate()
         {
             Console.WriteLine("Pleas type in instructor name");
             Instructor instructor = new Instructor() { Name = (Console.ReadLine()) };
@@ -78,13 +83,26 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas type in instructor neptun id");
             instructor.NeptunId = Console.ReadLine();
 
-            rest.Put<Instructor>(instructor, "Instructor");
+            
+            try
+            {
+                rest.Put<Instructor>(instructor, "Instructor");
+            }
+            catch (Exception ex)
+            {
 
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Would you like to try agen? \n Then type YES");
+                if (Console.ReadLine() == "YES")
+                {
+                    InstructorCreate();
+                }
+            }
 
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void InstructorDelete(RestService rest)
+        public  void InstructorDelete()
         {
             Console.WriteLine("Ples type in instructor neptun id to delet");
             string toDelet = Console.ReadLine();

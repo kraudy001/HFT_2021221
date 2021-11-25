@@ -9,7 +9,12 @@ namespace URE6XP_HFT_2021221.Client
 {
     class PresentationClient
     {
-        public static void PresentationGetALL(RestService rest)
+        RestService rest;
+        public PresentationClient(RestService rest)
+        {
+            this.rest = rest;
+        }
+        public  void PresentationGetALL()
         {
             Console.WriteLine("All Presentation Listed");
 
@@ -23,13 +28,13 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void PresentationGetOne(RestService rest)
+        public  void PresentationGetOne()
         {
             Console.WriteLine("What is the name of an presentation");
 
             string name = Console.ReadLine();
 
-            Instructor resoult = rest.GetSingle<Instructor>("Presentation/" + name);
+            Presentation resoult = rest.GetSingle<Presentation>("Presentation/" + name);
 
             Console.WriteLine("The looked for presentation");
             if (resoult != null)
@@ -44,36 +49,37 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void PresentationCreate(RestService rest)
+        public  void PresentationCreate()
         {
-            Console.WriteLine("Pleas type in presentation name");
-            Presentation presentation = new Presentation() {  InstrctoreName = (Console.ReadLine()) };
+            Console.WriteLine("Pleas type in presentation name (minimum 4 caracter)");
+            Presentation presentation = new Presentation() {  PresentationName = (Console.ReadLine()) };
 
             Console.WriteLine("Pleas type in room number");
             presentation.RoomNumber = Console.ReadLine();
 
-            Console.WriteLine("Pleas type in instructor name");
-            presentation.InstrctoreName = Console.ReadLine();
+            Console.WriteLine("Pleas type in instructor neptun id");
+            presentation.InstrctoreNeptunId = Console.ReadLine();
 
             try
             {
                 rest.Post<Presentation>(presentation, "Presentation");
             }
-            catch (ArgumentException ex)
+            catch (Exception)
             {
 
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presentation name must be minimum of 4 caracter");
+                Console.WriteLine("Room or instructor don't exist");
                 Console.WriteLine("Would you like to try agen? \n Then type YES");
                 if (Console.ReadLine() == "YES")
                 {
-                    PresentationCreate(rest);
+                    PresentationCreate();
                 }
             }
 
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void PresentationUpdate(RestService rest)
+        public  void PresentationUpdate()
         {
             Console.WriteLine("Pleas type in presentation name");
             Presentation presentation = new Presentation() { PresentationName = (Console.ReadLine()) };
@@ -82,7 +88,7 @@ namespace URE6XP_HFT_2021221.Client
             presentation.RoomNumber = Console.ReadLine();
             
             Console.WriteLine("Pleas type in instructor");
-            presentation.InstrctoreName = Console.ReadLine();
+            presentation.InstrctoreNeptunId = Console.ReadLine();
 
             rest.Put<Presentation>(presentation, "Presentation");
 
@@ -90,7 +96,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void PresentationDelete(RestService rest)
+        public  void PresentationDelete()
         {
             Console.WriteLine("Ples type in presentation name to delet");
             string toDelet = Console.ReadLine();

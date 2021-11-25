@@ -45,7 +45,7 @@ namespace URE6XP_HFT_2021221.Data
 
                 entity.HasOne(presentation => presentation.Instructor)
                 .WithMany(instructor => instructor.Presentations)
-                .HasForeignKey(presentation => presentation.InstrctoreName)
+                .HasForeignKey(presentation => presentation.InstrctoreNeptunId)
                 .OnDelete(DeleteBehavior.Cascade);
                 
             });
@@ -64,12 +64,12 @@ namespace URE6XP_HFT_2021221.Data
             LectureHall BC3304 = new LectureHall() { RoomNumber = "BC.3.304", Capacity = 24 };
 
 
-            Presentation HFT = new Presentation() { PresentationName = "HFT", RoomNumber = BAF01.RoomNumber, InstrctoreName = KovacsAndras.Name };
-            Presentation SZTF1 = new Presentation() { PresentationName = "SZTF1", RoomNumber = BA132.RoomNumber, InstrctoreName = KovacsAndras.Name };
-            Presentation ARCHI1 = new Presentation() { PresentationName = "Archi 1", RoomNumber = BAF01.RoomNumber, InstrctoreName = DurczyLevente.Name };
-            Presentation VIR = new Presentation() { PresentationName = "VIR", RoomNumber = BC3304.RoomNumber,  InstrctoreName = DrHolynkaPeter.Name };
-            Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai",  RoomNumber = BA210.RoomNumber, InstrctoreName = DrBujdosoLaszlo.Name };
-            Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A",  RoomNumber = BC3304.RoomNumber, InstrctoreName = GyorineKontorEva.Name };
+            Presentation HFT = new Presentation() { PresentationName = "HFT", RoomNumber = BAF01.RoomNumber, InstrctoreNeptunId = KovacsAndras.NeptunId };
+            Presentation SZTF1 = new Presentation() { PresentationName = "SZTF1", RoomNumber = BA132.RoomNumber, InstrctoreNeptunId = KovacsAndras.NeptunId };
+            Presentation ARCHI1 = new Presentation() { PresentationName = "Archi 1", RoomNumber = BAF01.RoomNumber, InstrctoreNeptunId = DurczyLevente.NeptunId };
+            Presentation VIR = new Presentation() { PresentationName = "VIR", RoomNumber = BC3304.RoomNumber, InstrctoreNeptunId = DrHolynkaPeter.NeptunId };
+            Presentation Menedzsment = new Presentation() { PresentationName = "Menedzsment alapjai",  RoomNumber = BA210.RoomNumber, InstrctoreNeptunId = DrBujdosoLaszlo.NeptunId };
+            Presentation AngolSzaknyelv = new Presentation() { PresentationName = "Angol Szaknyel A",  RoomNumber = BC3304.RoomNumber, InstrctoreNeptunId = GyorineKontorEva.NeptunId };
 
             modelBuilder.Entity<Instructor>().HasData(KovacsAndras, DrHolynkaPeter, DurczyLevente, SimonNagyGabriella, DrBujdosoLaszlo, GyorineKontorEva);
             modelBuilder.Entity<LectureHall>().HasData(BAF01, BA132, BA115, BA210, BC3304);

@@ -26,7 +26,7 @@ namespace URE6XP_HFT_2021221.Models
 
         public override string ToString()
         {
-            return "Room number = " + this.RoomNumber;
+            return "Room number = " + this.RoomNumber + "\t Room capacity = "+ this.Capacity ;
         }
     }
 }

@@ -38,9 +38,18 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
 
         // POST /Presentation
         [HttpPost]
-        public void Post([FromBody] Presentation value)
+        public IActionResult Post([FromBody] Presentation value)
         {
-            pl.Create(value);
+            try
+            {
+                pl.Create(value);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+            return Ok();
         }
 
         // PUT /Presentation

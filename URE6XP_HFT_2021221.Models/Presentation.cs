@@ -19,7 +19,7 @@ namespace URE6XP_HFT_2021221.Models
         public virtual Instructor Instructor { get; set; }
 
         [ForeignKey(nameof(Instructor))]
-        public string InstrctoreName { get; set; }
+        public string InstrctoreNeptunId { get; set; }
 
 
         [NotMapped]
@@ -31,7 +31,7 @@ namespace URE6XP_HFT_2021221.Models
 
         public override string ToString()
         {
-            return "Presentation name = " + this.PresentationName+ "\t Instructor name = " + this.InstrctoreName + "\t Room number = " + this.RoomNumber;
+            return "Presentation name = " + this.PresentationName+ "\t Instructor neptun id = " + this.InstrctoreNeptunId + "\t Room number = " + this.RoomNumber;
         }
 
     }

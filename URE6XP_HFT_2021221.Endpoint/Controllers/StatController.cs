@@ -32,28 +32,29 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
             return pl.PresentetionsAndNeptunIDs();
         }
         // GET: /Stat/GetInstructorsInLectureHallTest/5
-        [HttpGet]
+        [HttpGet("{roomNumber}")]
         public IEnumerable<string> GetInstructorsInLectureHallTest(string roomNumber)
         {
             return ll.InstructorsInLectureHall(roomNumber);
         }
         // GET: /Stat/WitchLacturesTeachisAnInstructorInARoom/5/5
-        [HttpGet]
-        public IEnumerable<string> GetWitchLacturesTeachisAnInstructorInARoom(string roomNumber, string neptunId)
+        [HttpGet("{roomNumberPluszNeptunId}")]
+        public IEnumerable<string> GetWitchLacturesTeachisAnInstructorInARoom(string roomNumberPluszNeptunId)
         {
-            return pl.WitchLacturesTeachisAnInstructorInARoom(roomNumber,neptunId);
+            string[] struff = roomNumberPluszNeptunId.Split(" ");
+            return pl.WitchLacturesTeachisAnInstructorInARoom(struff[0],struff[1]);
         }
         // GET: /Stat/HowManyRoomAnInstructorTeachisIn/5
-        [HttpGet]
+        [HttpGet("{neptunId}")]
         public int GetHowManyRoomAnInstructorTeachisIn(string neptunId)
         {
             return il.HowManyRoomAnInstructorTeachisIn(neptunId);
         }
         // GET: /Stat/PresentetionsAndNeptunIDs/5
-        [HttpGet]
-        public IEnumerable<string> RoomsThatAnInstructorHasLactures(string roomNumber)
+        [HttpGet("{NeptunId}")]
+        public IEnumerable<string> RoomsThatAnInstructorHasLactures(string NeptunId)
         {
-            return il.RoomsThatAnInstructorHasLactures(roomNumber);
+            return il.RoomsThatAnInstructorHasLactures(NeptunId);
         }
 
     }
