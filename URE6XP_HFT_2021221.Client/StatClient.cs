@@ -8,7 +8,12 @@ namespace URE6XP_HFT_2021221.Client
 {
     class StatClient
     {
-        public static void GetPresentetionsAndNeptunIDs(RestService rest)
+        RestService rest;
+        public StatClient(RestService rest)
+        {
+            this.rest = rest;
+        }        
+        public void GetPresentetionsAndNeptunIDs()
         {
             List<string> list = rest.Get<string>("Stat/GetPresentetionsAndNeptunIDs");
             Console.WriteLine("Presentation and neptun ID pairs");
@@ -20,7 +25,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void GetInstructorsInLectureHallTest(RestService rest)
+        public void GetInstructorsInLectureHallTest()
         {
             Console.WriteLine("Choos a room");
 
@@ -36,7 +41,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void GetWitchLacturesTeachisAnInstructorInARoom(RestService rest)
+        public void GetWitchLacturesTeachisAnInstructorInARoom()
         {
             Console.WriteLine("Choos a room");
 
@@ -58,7 +63,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void GetHowManyRoomAnInstructorTeachisIn(RestService rest)
+        public void GetHowManyRoomAnInstructorTeachisIn()
         {
             Console.WriteLine("Choos a neptun id");
 
@@ -80,7 +85,7 @@ namespace URE6XP_HFT_2021221.Client
             Console.WriteLine("Pleas hit enter to select an other optino");
             Console.ReadLine();
         }
-        public static void RoomsThatAnInstructorHasLactures(RestService rest)
+        public void RoomsThatAnInstructorHasLactures()
         {
             Console.WriteLine("Choos a neptun id");
 

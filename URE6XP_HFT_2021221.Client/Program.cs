@@ -21,6 +21,7 @@ namespace URE6XP_HFT_2021221.Client
             LectureHallClient lectureHallClient = new LectureHallClient(rest);
             PresentationClient presentationClient = new PresentationClient(rest);
             InstructorClient instructorClient = new InstructorClient(rest);
+            StatClient statClient = new StatClient(rest);
 
 
 
@@ -49,11 +50,11 @@ namespace URE6XP_HFT_2021221.Client
             .Add("Back to menu", ConsoleMenu.Close);
 
             var NonCRUD = new ConsoleMenu()
-                .Add("Returns presentations and instructor neptunid pairs", () => StatClient.GetPresentetionsAndNeptunIDs(rest))
-                .Add("Returns all instructors in room", () => StatClient.GetInstructorsInLectureHallTest(rest))
-                .Add("Return wich lectrus held in a room, by one instructor", () => StatClient.GetWitchLacturesTeachisAnInstructorInARoom(rest))
-                .Add("1Returns how many rooms an instructro teachis in", () => StatClient.GetHowManyRoomAnInstructorTeachisIn(rest))
-                .Add("Returns where those an instructro teaches in", () => StatClient.RoomsThatAnInstructorHasLactures(rest))
+                .Add("Returns presentations and instructor neptunid pairs", () => statClient.GetPresentetionsAndNeptunIDs())
+                .Add("Returns all instructors in room", () => statClient.GetInstructorsInLectureHallTest())
+                .Add("Return wich lectrus held in a room, by one instructor", () => statClient.GetWitchLacturesTeachisAnInstructorInARoom())
+                .Add("1Returns how many rooms an instructro teachis in", () => statClient.GetHowManyRoomAnInstructorTeachisIn())
+                .Add("Returns where those an instructro teaches in", () => statClient.RoomsThatAnInstructorHasLactures())
                 .Add("Back to menu", ConsoleMenu.Close);
 
 
