@@ -63,20 +63,11 @@ namespace URE6XP_HFT_2021221.Client
               .Add("Presentation commands", Presentation.Show)
               .Add("Lecture Hall commands", LectureHall.Show)
               .Add("Special methods", NonCRUD.Show)
-              .Add("Fuck", () => FUCKYOU())
               .Add("Exit", () => Environment.Exit(0));
 
             menu.Show();
         }
-      
-        public static void FUCKYOU()
-        {
-            Console.WriteLine("You asked for it\n\n\n"); // első próbálkozások :)
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("FUCK YOUUUUUUUU !!!4!!4!negy!!!\n\n\n");
-            Console.WriteLine("Pleas hit enter to select an other option");
-            Console.ReadLine();
-        }
+     
         
     }
 }
