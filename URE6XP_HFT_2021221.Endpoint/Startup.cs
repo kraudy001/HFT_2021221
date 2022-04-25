@@ -28,6 +28,7 @@ namespace URE6XP_HFT_2021221.Endpoint
             services.AddTransient<ILectureHallRepository, LectureHallRepository>();
             services.AddTransient<IInstructorRepository, InstructorRepository>();
             services.AddTransient<UnivercityDbContext, UnivercityDbContext>();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +44,7 @@ namespace URE6XP_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

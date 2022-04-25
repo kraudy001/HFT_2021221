@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
     public class PresentationController : ControllerBase
     {
         IPresentationLogic pl;
+        IHubContext<SignalRHub> hub;
 
-        public PresentationController(IPresentationLogic presentationLogic)
+        public PresentationController(IPresentationLogic presentationLogic, IHubContext<SignalRHub> hub)
         {
             this.pl = presentationLogic;
+            this.hub = hub;
         }
 
 
@@ -43,6 +46,7 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
             try
             {
                 pl.Create(value);
+                hub.Clients.All.SendAsync("PresentationCreate", value);
             }
             catch (Exception ex)
             {
@@ -57,13 +61,16 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Presentation value)
         {
             pl.Update(value);
+            hub.Clients.All.SendAsync("PresentationUpdate", value);
         }
 
         // DELETE /Presentation/5
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
+            var toDelet = pl.Read(id);
             pl.Delete(id);
+            hub.Clients.All.SendAsync("PresentationDelete", toDelet);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
     public class LectureHallController : ControllerBase
     {
         ILectureHallLogic ll;
+        IHubContext<SignalRHub> hub;
 
-        public LectureHallController(ILectureHallLogic lectureHallLogic)
+        public LectureHallController(ILectureHallLogic lectureHallLogic, IHubContext<SignalRHub> hub)
         {
             this.ll = lectureHallLogic;
+            this.hub = hub;
         }
 
         // GET: /LectureHall
@@ -42,6 +45,7 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
             try
             {
                 ll.Create(value);
+                hub.Clients.All.SendAsync("LectureHallCreate", value);
             }
             catch (Exception ex)
             {
@@ -57,13 +61,17 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] LectureHall value)
         {
             ll.Update(value);
+            hub.Clients.All.SendAsync("LectureHallUpdated", value);
         }
 
         // DELETE /LectureHall/5
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
+            var toDelet = ll.Read(id);
             ll.Delete(id);
+            hub.Clients.All.SendAsync("LectureHallDelete", toDelet);
+
         }
     }
 }

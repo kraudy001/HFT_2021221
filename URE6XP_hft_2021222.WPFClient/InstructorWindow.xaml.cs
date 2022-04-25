@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace URE6XP_hft_2021222.WPFClient
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for InstructorWindow.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class InstructorWindow : Window
     {
-        public Window1()
+        public InstructorWindow()
         {
             InitializeComponent();
         }

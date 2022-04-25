@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,11 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
     public class InstructorController : ControllerBase
     {
         IInstructorLogic il;
-        public InstructorController(IInstructorLogic instructorLogic)
+        IHubContext<SignalRHub> hub;
+        public InstructorController(IInstructorLogic instructorLogic, IHubContext<SignalRHub> hub)
         {
             this.il = instructorLogic;
+            this.hub = hub;
         }
 
 
@@ -42,6 +45,7 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
             try
             {
                 il.Create(value);
+                hub.Clients.All.SendAsync("InstructorCreated", value);
             }
             catch (Exception ex)
             {
@@ -58,6 +62,7 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
             try
             {
                 il.Update(value);
+                hub.Clients.All.SendAsync("InstructorUpdated", value);
             }
             catch (Exception ex)
             {
@@ -71,7 +76,9 @@ namespace URE6XP_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
+            var toDelet = il.Read(id);
             il.Delete(id);
+            hub.Clients.All.SendAsync("InstructorDeleted", toDelet);
         }
     }
 }

@@ -24,5 +24,23 @@ namespace URE6XP_hft_2021222.WPFClient
         {
             InitializeComponent();
         }
+
+        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            InstructorWindow instructorWindow = new InstructorWindow();
+            instructorWindow.Show();
+        }
+
+        private void Button_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            PresentationWindow presentationWindow = new PresentationWindow();
+            presentationWindow.Show();
+        }
+
+        private void Button_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            LactureHallWindow lactureHallWindow = new LactureHallWindow();
+            lactureHallWindow.Show();
+        }
     }
 }

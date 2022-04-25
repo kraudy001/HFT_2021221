@@ -6,32 +6,11 @@
         xmlns:local="clr-namespace:URE6XP_hft_2021222.WPFClient"
         mc:Ignorable="d"
         Title="InstructorEditor" Height="450" Width="800">
-    <Window.DataContext>
-        <local:InstructorWindowViewModel/>
-    </Window.DataContext>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Instructor}" SelectedItem="{Binding Selected}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Name}"/>
-                        <Label Content="{Binding NeptunId}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding Selected.Name}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding Selected.NeptunId}" Margin="5,5,5,10"/>
-            <Button Content="Add" Margin="10" Command="{Binding CreateInstructorCommand}"/>
-            <Button Content="Remove" Margin="10" Command="{Binding DeleteInstructorCommand}"/>
-            <Button Content="Edit" Margin="10" Command="{Binding UpdateInstructorCommand}"/>
+        <StackPanel >
+            <Button Content="Instuctors" Margin="10" MouseLeftButtonDown="Button_MouseLeftButtonDown"/>
+            <Button Content="Presentations" Margin="10" MouseLeftButtonDown="Button_MouseLeftButtonDown_1"/>
+            <Button Content="Lacture Halls" Margin="10" MouseLeftButtonDown="Button_MouseLeftButtonDown_2"/>
 
         </StackPanel>
     </Grid>
