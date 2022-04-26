@@ -23,5 +23,10 @@ namespace URE6XP_hft_2021222.WPFClient
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

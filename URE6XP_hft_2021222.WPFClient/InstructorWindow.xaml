@@ -32,6 +32,7 @@
             <Button Content="Add" Margin="10" Command="{Binding CreateInstructorCommand}"/>
             <Button Content="Remove" Margin="10" Command="{Binding DeleteInstructorCommand}"/>
             <Button Content="Edit" Margin="10" Command="{Binding UpdateInstructorCommand}"/>
+            <Button Content="Back" Margin="10" Click="Button_Click"/>
 
         </StackPanel>
     </Grid>
