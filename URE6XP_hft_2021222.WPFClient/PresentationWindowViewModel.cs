@@ -46,7 +46,7 @@ namespace URE6XP_hft_2021222.WPFClient
 
             CreatePresentationCommand = new RelayCommand(() =>
             {
-                Presentation.Add(new URE6XP_HFT_2021221.Models.Presentation()
+                Presentation.Add(new Presentation()
                 {
                     InstrctoreNeptunId = SelectedPresentation.InstrctoreNeptunId,
                     PresentationName = SelectedPresentation.PresentationName,

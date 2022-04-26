@@ -25,9 +25,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
+            <Label Content="Room number" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.RoomNumber}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
+            <Label Content="Capacity" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.Capacity}" Margin="5,5,5,10"/>
             <Button Content="Add" Margin="10" Command="{Binding CreateLectureHall}"/>
             <Button Content="Remove" Margin="10" Command="{Binding DeleteLectureHall}"/>

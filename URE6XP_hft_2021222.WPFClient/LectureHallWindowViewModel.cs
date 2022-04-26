@@ -29,10 +29,10 @@ namespace URE6XP_hft_2021222.WPFClient
                         Capacity = value.Capacity,
                         Presentations = value.Presentations,
                         RoomNumber = value.RoomNumber,
-                    };
-                    OnPropertyChanged();
-                    (DeleteLectureHall as RelayCommand).NotifyCanExecuteChanged();
+                    };  
                 }
+                OnPropertyChanged();
+                (DeleteLectureHall as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 

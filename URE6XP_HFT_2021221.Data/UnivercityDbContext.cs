@@ -41,12 +41,12 @@ namespace URE6XP_HFT_2021221.Data
                 entity.HasOne(presentation => presentation.LectureHall)
                 .WithMany(lectureHall => lectureHall.Presentations)
                 .HasForeignKey(presentations => presentations.RoomNumber)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
 
                 entity.HasOne(presentation => presentation.Instructor)
                 .WithMany(instructor => instructor.Presentations)
                 .HasForeignKey(presentation => presentation.InstrctoreNeptunId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
                 
             });
 

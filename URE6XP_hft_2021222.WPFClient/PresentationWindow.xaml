@@ -26,15 +26,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
+            <Label Content="Presentation name" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.PresentationName}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
+            <Label Content="Instructor" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.Instructor}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
+            <Label Content="Isntructor neptun id" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.InstrctoreNeptunId}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
+            <Label Content="Lecture hall" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.LectureHall}" Margin="5,5,5,10"/>
-            <Label Content="Neptun Id" Background="LightBlue" Padding="10"/>
+            <Label Content="room number" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding Selected.RoomNumber}" Margin="5,5,5,10"/>
             <Button Content="Add" Margin="10" Command="{Binding CreateInstructorCommand}"/>
             <Button Content="Remove" Margin="10" Command="{Binding DeleteInstructorCommand}"/>
