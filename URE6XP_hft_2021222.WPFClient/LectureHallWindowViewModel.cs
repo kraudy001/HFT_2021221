@@ -11,7 +11,7 @@ using URE6XP_HFT_2021221.WPFClient;
 
 namespace URE6XP_hft_2021222.WPFClient
 {
-    public class LectureHallWindowViewModel: ObservableRecipient
+    class LectureHallWindowViewModel: ObservableRecipient
     {
         public RestCollection<LectureHall> lectureHall { get; set; }
 

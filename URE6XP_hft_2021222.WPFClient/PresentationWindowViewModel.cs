@@ -11,7 +11,7 @@ using URE6XP_HFT_2021221.WPFClient;
 
 namespace URE6XP_hft_2021222.WPFClient
 {
-    internal class PresentationWindowViewModel : ObservableObject
+    class PresentationWindowViewModel : ObservableObject
     {
         public RestCollection<Presentation> Presentation { get; set; }
         public Presentation SelectedPresentation;

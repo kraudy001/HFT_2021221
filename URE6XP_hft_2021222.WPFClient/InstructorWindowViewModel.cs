@@ -39,10 +39,8 @@ namespace URE6XP_hft_2021222.WPFClient
         public ICommand DeleteInstructorCommand { get; set; }
         public ICommand UpdateInstructorCommand { get; set; }
 
-
         public InstructorWindowViewModel()
         {
-            
             Instructor = new RestCollection<Instructor>("http://localhost:60173/", "instructor", "hub");
 
             CreateInstructorCommand = new RelayCommand(() =>
