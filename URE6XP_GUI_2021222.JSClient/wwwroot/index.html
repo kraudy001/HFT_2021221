@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
     <h1>Instructors</h1>
 
-    <div id="InstructorDev">
+    <div id="InstructorDiv">
         <label>Instructor Name</label>
         <input type="text" id="InstructorName" />
         <label>Instructor NeptunId</label>
@@ -21,20 +22,82 @@
         <input type="text" id="InstructorNameTuUpdate" />
         <button type="button" onclick="InstructorUpdate()">Update</button>
     </div>
-
-
     <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>NeptunId</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody id="Instructors">
         </tbody>
     </table>
 
+
+
+
+
+    <h1>Presentations</h1>
+
+    <div id="PresentationDiv">
+        <label>Presentation name</label>
+        <input type="text" id="PresentationName" />
+        <label>Instructor neptunId</label>
+        <input type="text" id="PresentationInstructorNeptunId" />
+        <label>Room number</label>
+        <input type="text" id="PresentationRoomNumber" />
+        <button type="button" onclick="PresentationCreate()">Add</button>
+    </div>
+
+    <div id="UpdatePresentationDiv">
+        <label>Instructor neptunId</label>
+        <input type="text" id="PresentationInstructorNeptunIdToChange" />
+        <label>Room number</label>
+        <input type="text" id="PresentationRoomNumberToChange" />
+        <button type="button" onclick="PresentationUpdate()">Update</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Presentation name</th>
+                <th>Instructor NeptunId</th>
+                <th>Room number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="Presentations">
+        </tbody>
+    </table>
+
+
+
+    <h1>LectureHells</h1>
+
+    <div id="LectureHallDiv">
+        <label>Room number</label>
+        <input type="text" id="LectureHallRoomNumber" />
+        <label>Capacity</label>
+        <input type="text" id="LectureHallCapacity" />
+        <button type="button" onclick="LectureHallCreate()">Add</button>
+    </div>
+
+    <div id="UpdateLectureHallDiv">
+        <label>Capacity</label>
+        <input type="text" id="LectureHallCapacityToUpdate" />
+        <button type="button" onclick="LectureHallUpdate()">Update</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Room number</th>
+                <th>Capacity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="LectureHalls">
+        </tbody>
+    </table>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>

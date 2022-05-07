@@ -14,11 +14,11 @@ th,td{
     padding: 5px;
 }
 
-#InstructorDev{
+#InstructorDiv{
     display: flex;
     flex-direction: column;
 }
-#InstructorDev label, button, input{
+#InstructorDiv label, button, input{
     margin: 7px;
     padding: 5px;
 }
