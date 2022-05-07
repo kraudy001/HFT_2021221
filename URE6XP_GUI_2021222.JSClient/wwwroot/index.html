@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Instructor</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Instructors</h1>
+
+    <div id="InstructorDev">
+        <label>Instructor Name</label>
+        <input type="text" id="InstructorName" />
+        <label>Instructor NeptunId</label>
+        <input type="text" id="InstructorNeptunId" />
+        <button type="button" onclick="InstructorCreate()">Add</button>
+    </div>
+
+    <div id="UpdateInstructorDiv">
+        <label>Instructor Name</label>
+        <input type="text" id="InstructorNameTuUpdate" />
+        <button type="button" onclick="InstructorUpdate()">Update</button>
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>NeptunId</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="Instructors">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

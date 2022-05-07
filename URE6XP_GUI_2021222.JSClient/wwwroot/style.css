@@ -1,0 +1,36 @@
+﻿table{
+    width: 100%;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+table{
+    border-collapse:collapse;
+}
+
+th,td{
+    padding: 5px;
+}
+
+#InstructorDev{
+    display: flex;
+    flex-direction: column;
+}
+#InstructorDev label, button, input{
+    margin: 7px;
+    padding: 5px;
+}
+
+#UpdateInstructorDiv {
+    display: none;
+    flex-direction: column;
+}
+
+#UpdateInstructorDiv label, button, input {
+    margin: 7px;
+    padding: 5px;
+}
+
+
