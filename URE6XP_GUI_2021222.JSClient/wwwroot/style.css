@@ -34,3 +34,13 @@ th,td{
 }
 
 
+#UpdatePresentationDiv {
+    display: none;
+    flex-direction: column;
+}
+
+#UpdateLectureHallDiv {
+    display: none;
+    flex-direction: column;
+}
+
